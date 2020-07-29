@@ -10,6 +10,9 @@ export const fetchUrl = async (url: string): Promise<string> => {
     }
 };
 
+export const getFileName = (category: string, ext: string): string =>
+    `${category}-${Date.now().toFixed()}${ext}`;
+
 export const getMaxPage = (content: string): number => {
     const selector = load(content);
 
