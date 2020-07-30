@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { scrapeEquipment } from './scrapers/equipment';
 import dotenv from 'dotenv';
 import { createConnection } from 'typeorm';
 
@@ -10,5 +11,8 @@ dotenv.config();
         host: process.env.HOST as any,
         port: process.env.PORT as any,
         database: process.env.DB_NAME as any,
+        useUnifiedTopology: true,
     });
+
+    scrapeEquipment();
 })();

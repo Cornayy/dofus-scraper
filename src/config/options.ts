@@ -1,4 +1,5 @@
-export const options = {
+export const requestOptions = {
+    dofusUrl: 'https://www.dofus.com',
     baseUrl: 'https://www.dofus.com/en/mmorpg/encyclopedia',
     sizeParam: '?size=96',
     pageParam: '&page=',

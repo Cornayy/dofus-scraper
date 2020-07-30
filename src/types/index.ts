@@ -1,3 +1,5 @@
+export type ScrapeCallback = (selector: CheerioStatic) => string | string[] | number;
+
 export enum ItemType {
     Equipment = 'equipment',
 }
@@ -67,5 +69,5 @@ export enum StatType {
     PushbackRes = 'Pushback Resistance',
     PctRangedRes = '% Ranged Resistance',
     PctMeleeRes = '% Melee Resistance',
-    Pods = 'Pods'
+    Pods = 'Pods',
 }

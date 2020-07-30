@@ -20,11 +20,14 @@ export class Equipment {
     imageUrl: string;
 
     @Column()
+    encyclopediaUrl: string;
+
+    @Column()
     level: number;
 
     @Column()
     type: EquipmentType;
 
-    @OneToMany(() => Stat, stat => stat.equipment)
+    @OneToMany(() => Stat, (stat) => stat.equipment)
     stats: Stat[];
 }

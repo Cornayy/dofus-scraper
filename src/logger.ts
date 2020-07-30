@@ -1,9 +1,9 @@
 import { paths } from './config/options';
 import { getFileName } from './utils';
-import { ItemCategory } from './types/index';
+import { ItemType } from './types';
 import { createWriteStream, existsSync, mkdirSync } from 'fs';
 
-export const writeToLog = (category: ItemCategory, items: string[]): void => {
+export const writeToLog = (category: ItemType, items: string[]): void => {
     if (!existsSync(paths.logPath)) {
         mkdirSync(paths.logPath);
     }
