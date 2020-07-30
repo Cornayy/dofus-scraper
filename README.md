@@ -1,6 +1,9 @@
 # dofus-scraper
 Scrape the encyclopedia of [Dofus](https://www.dofus.com/en) and save it to your configured database.
 
+## Disclaimer
+This project is currently work in progress, feel free to contribute.
+
 ## Usage
 Create a .env file in the root of your project, a typical .env should look like this.
 
