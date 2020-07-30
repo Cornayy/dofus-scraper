@@ -11,6 +11,8 @@ export const scrapeEquipment = async (): Promise<void> => {
     const maxPage = getMaxPage(content);
     const links = await retrieveLinks(maxPage, baseUrl);
 
+    // TODO: create objects based on the scraped information and save to db. 
+
     // for (const link of links) {
     //     const equipmentContent = await fetchUrl(`${requestOptions.dofusUrl}${link}`);
     //     console.log(getContent(equipmentContent, getConditions));
