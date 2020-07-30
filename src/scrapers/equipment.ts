@@ -1,4 +1,4 @@
-import { ItemCategory } from './../types/index';
+import { ItemType } from './../types/index';
 import { writeToLog } from '../logger';
 import { options } from './../config/options';
 import { fetchUrl, getMaxPage } from './../utils';
@@ -10,7 +10,7 @@ export const scrapeEquipment = async (): Promise<void> => {
     const maxPage = getMaxPage(content);
     const links = await retrieveLinks(maxPage, baseUrl);
 
-    writeToLog(ItemCategory.Equipment, links);
+    writeToLog(ItemType.Equipment, links);
 };
 
 export const retrieveLinks = async (maxPage: number, url: string): Promise<string[]> => {
