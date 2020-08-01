@@ -6,5 +6,6 @@ export const requestOptions = {
 };
 
 export const paths = {
-    logPath: 'src/logs',
+    data: 'src/data',
+    links: 'src/data/links'
 };

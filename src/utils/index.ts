@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+export * from './links';
+
 export const fetchUrl = async (url: string): Promise<string> => {
     try {
         const { data } = await axios.get(url);
@@ -9,5 +11,4 @@ export const fetchUrl = async (url: string): Promise<string> => {
     }
 };
 
-export const getFileName = (category: string, ext: string): string =>
-    `${category}-${Date.now().toFixed()}${ext}`;
+export const getFileName = (category: string, ext: string): string => `${category}${ext}`;
