@@ -1,6 +1,6 @@
-import { EquipmentType } from './../types/index';
+import { EquipmentType } from '../../equipment/types/index';
 import { Entity, ObjectID, ObjectIdColumn, Column, OneToMany } from 'typeorm';
-import { Stat } from './Stat';
+import { Stat } from '../../stat/models/Stat';
 
 @Entity()
 export class Equipment {

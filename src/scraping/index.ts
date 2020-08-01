@@ -1,4 +1,4 @@
-import { ScrapeCallback } from './../types/index';
+import { ScrapeCallback } from '../types/index';
 import { load } from 'cheerio';
 
 export const getMaxPage = (content: string): number => {

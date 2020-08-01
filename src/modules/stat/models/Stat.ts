@@ -1,5 +1,5 @@
-import { Equipment } from './Equipment';
-import { StatType } from './../types/index';
+import { Equipment } from '../../equipment/models/Equipment';
+import { StatType } from '../../../types/index';
 import { Entity, ObjectID, ObjectIdColumn, Column, ManyToOne } from 'typeorm';
 
 @Entity()

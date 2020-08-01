@@ -1,8 +1,8 @@
-import { retrieveLinks } from './../utils/index';
-import { ItemType } from './../types/index';
-import { requestOptions } from './../config/options';
-import { getMaxPage } from './';
-import { fetchUrl } from '../utils';
+import { retrieveLinks } from '../../utils/index';
+import { ItemType } from '../../types/index';
+import { requestOptions } from '../../config/options';
+import { getMaxPage } from '../../scraping';
+import { fetchUrl } from '../../utils';
 
 export const scrapeEquipment = async (): Promise<void> => {
     const baseUrl = `${requestOptions.baseUrl}/equipment${requestOptions.sizeParam}`;

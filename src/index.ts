@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { scrapeEquipment } from './scrapers/equipment';
+import { scrapeEquipment } from './modules/equipment/scraper';
 import dotenv from 'dotenv';
 import { createConnection } from 'typeorm';
 
