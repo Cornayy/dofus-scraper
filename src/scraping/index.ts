@@ -23,13 +23,13 @@ export const scrape = async <T extends BaseEntity>(
     const repository = getRepository<T>(entity);
 
     for (const link of links) {
-        const equipmentContent = await fetchUrl(`${requestOptions.dofusUrl}${link}`);
+        const item = await fetchUrl(`${requestOptions.dofusUrl}${link}`);
 
-        if (!equipmentContent) continue;
+        if (!item) continue;
 
         const object = required
             .map((callback) => {
-                return getContent<T>(equipmentContent, callback);
+                return getContent<T>(item, callback);
             })
             .reduce((a, b) => ({ ...a, ...b }));
 
