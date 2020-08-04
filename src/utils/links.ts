@@ -35,6 +35,9 @@ export const retrieveLinks = async (
     } else {
         for (let i = 1; i <= maxPage; i++) {
             const item = await fetchUrl(`${url}${requestOptions.pageParam}${i}`);
+
+            if (!item) continue;
+
             const selector = load(item);
 
             selector('table[class="ak-table ak-responsivetable"] > tbody')

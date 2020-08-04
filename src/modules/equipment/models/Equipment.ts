@@ -1,9 +1,7 @@
-import { EquipmentType } from '../../equipment/types/index';
-import { Entity, ObjectID, ObjectIdColumn, Column, OneToMany } from 'typeorm';
-import { Stat } from '../../stat/models/Stat';
+import { Entity, ObjectID, ObjectIdColumn, Column, BaseEntity } from 'typeorm';
 
 @Entity()
-export class Equipment {
+export class Equipment extends BaseEntity {
     @ObjectIdColumn()
     id: ObjectID;
 
@@ -14,7 +12,7 @@ export class Equipment {
     description: string;
 
     @Column()
-    conditions: string;
+    conditions: string[];
 
     @Column()
     imageUrl: string;
@@ -26,8 +24,8 @@ export class Equipment {
     level: number;
 
     @Column()
-    type: EquipmentType;
+    type: string;
 
-    @OneToMany(() => Stat, (stat) => stat.equipment)
-    stats: Stat[];
+    @Column()
+    stats: string[];
 }

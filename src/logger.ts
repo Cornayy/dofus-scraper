@@ -4,12 +4,10 @@ import { ItemType } from './types';
 import { createWriteStream, existsSync, mkdirSync } from 'fs';
 
 export const storeLinks = (category: ItemType, items: string[]): void => {
-    if (!existsSync(paths.data)) {
-        mkdirSync(paths.data);
-    }
-
-    if (!existsSync(paths.links)) {
-        mkdirSync(paths.links);
+    for (const path of Object.values(paths)) {
+        if (!existsSync(path)) {
+            mkdirSync(path);
+        }
     }
 
     const fileName = getFileName(category.toString(), '.txt');

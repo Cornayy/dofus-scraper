@@ -1,4 +1,10 @@
-export type ScrapeCallback = (selector: CheerioStatic) => string | string[] | number;
+import { DeepPartial } from 'typeorm';
+
+export type ScrapeCallback<T> = (selector: CheerioStatic) => DeepPartial<T>;
+
+export interface ObjectPart {
+    [key: string]: string | number | string[];
+}
 
 export enum ItemType {
     Equipment = 'equipment',
