@@ -28,9 +28,7 @@ export const scrape = async <T extends BaseEntity>(
         if (!item) continue;
 
         const object = required
-            .map((callback) => {
-                return getContent<T>(item, callback);
-            })
+            .map((callback) => getContent<T>(item, callback))
             .reduce((a, b) => ({ ...a, ...b }));
 
         await repository.create({ ...object, encyclopediaUrl: link }).save();
@@ -86,14 +84,14 @@ export const getImageUrl = (selector: CheerioStatic) => {
 
 export const getStats = (selector: CheerioStatic) => {
     return {
-        stats: selector(
-            'div[class="ak-encyclo-detail-right ak-nocontentpadding"] > div[class="ak-container ak-panel"] > div[class="ak-panel-content"]'
-        )
-            .last()
+        stats: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
+            .first()
+            .find('div[class="ak-title"]')
             .text()
             .trim()
             .replace(/Effects/g, '')
             .split('\n')
+            .map((stat) => stat.trim())
             .filter((stat) => stat),
     };
 };
