@@ -33,6 +33,8 @@ export const retrieveLinks = async (
         const existingLinks = readLinks(category);
         links.push(...existingLinks);
     } else {
+        console.log(`Links for category (${category.toString()}) not found, creating link file.`);
+
         for (let i = 1; i <= maxPage; i++) {
             const item = await fetchUrl(`${url}${requestOptions.pageParam}${i}`);
 
