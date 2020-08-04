@@ -1,15 +1,32 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import dotenv from 'dotenv';
 import { Equipment } from './modules/equipment/models/Equipment';
-import { getDescription, getImageUrl, getLevel, getName, getType } from './scraping/index';
-import { getConditions, getStats } from './scraping/index';
 import { ItemType } from './types/index';
-import { scrape } from './scraping';
+import {
+    scrape,
+    getName,
+    getType,
+    getStats,
+    getConditions,
+    getDescription,
+    getLevel,
+    getImageUrl,
+} from './scraping';
 import { createConnection } from 'typeorm';
 
 dotenv.config();
 
 (async () => {
+    const defaultProps = [
+        getName,
+        getType,
+        getStats,
+        getConditions,
+        getDescription,
+        getLevel,
+        getImageUrl,
+    ];
+
     await createConnection({
         type: process.env.DB_TYPE as any,
         host: process.env.HOST as any,
@@ -19,13 +36,5 @@ dotenv.config();
         entities: ['./src/modules/**/models/*.ts'],
     });
 
-    scrape<Equipment>(Equipment, ItemType.Equipment, [
-        getName,
-        getType,
-        getStats,
-        getConditions,
-        getDescription,
-        getLevel,
-        getImageUrl,
-    ]);
+    scrape<Equipment>(Equipment, ItemType.Equipment, defaultProps);
 })();

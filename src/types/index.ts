@@ -6,6 +6,10 @@ export interface ObjectPart {
     [key: string]: string | number | string[];
 }
 
+export interface ScrapeOptions {
+    useDefaultProps: boolean;
+}
+
 export enum ItemType {
     Equipment = 'equipment',
 }

@@ -7,5 +7,5 @@ export const requestOptions = {
 
 export const paths = {
     data: 'src/data',
-    links: 'src/data/links'
+    links: 'src/data/links',
 };
