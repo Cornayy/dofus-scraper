@@ -8,4 +8,5 @@ export const requestOptions = {
 export const paths = {
     data: 'src/data',
     links: 'src/data/links',
+    json: 'src/data/json',
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export * from './links';
+export * from './data';
 
 export const fetchUrl = async (url: string): Promise<string> => {
     try {
@@ -12,3 +12,5 @@ export const fetchUrl = async (url: string): Promise<string> => {
 };
 
 export const getFileName = (category: string, ext: string): string => `${category}${ext}`;
+
+export const sleep = (ms: number): Promise<void> => new Promise((r) => setTimeout(r, ms));

@@ -1,3 +1,4 @@
+import { getSet } from './scraping/index';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import dotenv from 'dotenv';
 import { Equipment } from './modules/equipment/models/Equipment';
@@ -36,5 +37,5 @@ dotenv.config();
         entities: ['./src/modules/**/models/*.ts'],
     });
 
-    scrape<Equipment>(Equipment, ItemType.Equipment, defaultProps);
+    scrape<Equipment>(Equipment, ItemType.Equipment, [...defaultProps, getSet]);
 })();

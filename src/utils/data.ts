@@ -6,13 +6,8 @@ import { storeLinks } from '../logger';
 import { fetchUrl } from '.';
 import { load } from 'cheerio';
 
-export const getLinkPath = (category: ItemType): string => {
-    return join(paths.links, `${category.toString()}.txt`);
-};
-
-export const linksExist = (category: ItemType): boolean => {
-    const path = getLinkPath(category);
-    return existsSync(path);
+export const fileExists = (path: string, category: ItemType, ext: string): boolean => {
+    return existsSync(join(path, `${category.toString()}${ext}`));
 };
 
 export const readLinks = (category: ItemType): string[] => {
@@ -27,9 +22,9 @@ export const retrieveLinks = async (
     category: ItemType
 ): Promise<string[]> => {
     const links = [];
-    const fileExists = linksExist(category);
+    const exists = fileExists(paths.links, category, '.txt');
 
-    if (fileExists) {
+    if (exists) {
         const existingLinks = readLinks(category);
         links.push(...existingLinks);
     } else {

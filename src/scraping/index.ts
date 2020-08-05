@@ -1,5 +1,8 @@
+import { paths } from './../config/options';
+import { fileExists } from './../utils/';
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 /* eslint-disable @typescript-eslint/ban-types */
+import { sleep } from './../utils/index';
 import { DeepPartial } from 'typeorm';
 import { BaseEntity, getRepository } from 'typeorm';
 import { ItemType } from './../types/index';
@@ -13,6 +16,13 @@ export const scrape = async <T extends BaseEntity>(
     category: ItemType,
     required: ScrapeCallback<T>[]
 ): Promise<void> => {
+    if (fileExists(paths.json, category, '.json')) {
+        console.log(
+            `Data for the category (${category.toString()}) already exists, please import the JSON file into your database.`
+        );
+        return;
+    }
+
     const baseUrl = `${requestOptions.baseUrl}/${category.toString()}${requestOptions.sizeParam}`;
     const content = await fetchUrl(baseUrl);
 
@@ -32,6 +42,9 @@ export const scrape = async <T extends BaseEntity>(
             .reduce((a, b) => ({ ...a, ...b }));
 
         await repository.create({ ...object, encyclopediaUrl: link }).save();
+
+        // Wait a bit before next scraping due to rate-limiting.
+        await sleep(500);
     }
 
     console.log(`Done scraping ${links.length} item(s) of category (${category.toString()})`);
@@ -74,7 +87,8 @@ export const getDescription = (selector: CheerioStatic) => {
         )
             .first()
             .find('div[class="ak-panel-content"]')
-            .text(),
+            .text()
+            .trim(),
     };
 };
 
@@ -115,5 +129,18 @@ export const getConditions = (selector: CheerioStatic) => {
             .trim()
             .split('\n')
             .filter((condition) => condition),
+    };
+};
+
+export const getSet = (selector: CheerioStatic) => {
+    return {
+        set: selector('div[class="ak-panel-title"]')
+            .filter((_index, element) => {
+                const ele = load(element).root();
+                return ele.text().trim().includes('is part of the');
+            })
+            .first()
+            .find('a[href]')
+            .attr('href'),
     };
 };

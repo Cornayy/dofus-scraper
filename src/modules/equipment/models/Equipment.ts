@@ -27,5 +27,8 @@ export class Equipment extends BaseEntity {
     type: string;
 
     @Column()
+    set: string;
+
+    @Column()
     stats: string[];
 }
