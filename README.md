@@ -23,7 +23,7 @@ npm run start
 ```
 
 ## TODO
-- [ ] Equipment
+- [x] Equipment
 - [ ] Sets
 - [ ] Classes
 - [ ] Professions
