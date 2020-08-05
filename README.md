@@ -1,7 +1,7 @@
-<a href="https://codeclimate.com/github/Cornayy/dofus-scraper/maintainability"><img src="https://api.codeclimate.com/v1/badges/807065bf4ec6dfbff9fb/maintainability" /></a>
-
 # dofus-scraper
 Scrape the encyclopedia of [Dofus](https://www.dofus.com/en) and save it to your configured database.
+
+<a href="https://codeclimate.com/github/Cornayy/dofus-scraper/maintainability"><img src="https://api.codeclimate.com/v1/badges/807065bf4ec6dfbff9fb/maintainability" /></a>
 
 ## Disclaimer
 This project is currently work in progress, feel free to contribute.
