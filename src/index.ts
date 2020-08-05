@@ -1,4 +1,3 @@
-import { getSet } from './scraping/index';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import dotenv from 'dotenv';
 import { Equipment } from './modules/equipment/models/Equipment';
@@ -12,6 +11,7 @@ import {
     getDescription,
     getLevel,
     getImageUrl,
+    getSet,
 } from './scraping';
 import { createConnection } from 'typeorm';
 
