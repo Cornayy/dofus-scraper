@@ -1,3 +1,6 @@
+import { BaseEntity, DeepPartial } from 'typeorm';
+/* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { ItemType } from './../types/index';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
@@ -5,13 +8,14 @@ import { paths, requestOptions } from '../config/options';
 import { storeLinks } from '../logger';
 import { fetchUrl } from '.';
 import { load } from 'cheerio';
+import { getRepository } from 'typeorm';
 
 export const fileExists = (path: string, category: ItemType, ext: string): boolean => {
-    return existsSync(join(path, `${category.toString()}${ext}`));
+    return existsSync(join(path, `${category}${ext}`));
 };
 
 export const readLinks = (category: ItemType): string[] => {
-    return readFileSync(join(paths.links, `${category.toString()}.txt`))
+    return readFileSync(join(paths.links, `${category}.txt`))
         .toString()
         .split('\n');
 };
@@ -28,7 +32,7 @@ export const retrieveLinks = async (
         const existingLinks = readLinks(category);
         links.push(...existingLinks);
     } else {
-        console.log(`Links for category (${category.toString()}) not found, creating link file.`);
+        console.log(`Links for category (${category}) not found, creating link file.`);
 
         for (let i = 1; i <= maxPage; i++) {
             const item = await fetchUrl(`${url}${requestOptions.pageParam}${i}`);
@@ -48,4 +52,20 @@ export const retrieveLinks = async (
     }
 
     return links;
+};
+
+export const writeToDatabase = async <T extends BaseEntity>(
+    entity: Function,
+    path: string
+): Promise<void> => {
+    try {
+        const items: DeepPartial<T>[] = JSON.parse(readFileSync(path, 'utf-8'));
+        const repository = getRepository<T>(entity);
+
+        for (const item of items) {
+            await repository.create(item).save();
+        }
+    } catch (err) {
+        console.error(`Failed to write JSON file of path ${path} to database: ${err}`);
+    }
 };

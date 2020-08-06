@@ -12,7 +12,7 @@ import {
     getLevel,
     getImageUrl,
     getSet,
-} from './scraping';
+} from './modules/scraping';
 import { createConnection } from 'typeorm';
 
 dotenv.config();

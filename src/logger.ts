@@ -10,7 +10,7 @@ export const storeLinks = (category: ItemType, items: string[]): void => {
         }
     }
 
-    const fileName = getFileName(category.toString(), '.txt');
+    const fileName = getFileName(category, '.txt');
     const stream = createWriteStream(`${paths.links}/${fileName}`);
 
     stream.once('open', () => {
