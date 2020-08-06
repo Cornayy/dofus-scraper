@@ -1,6 +1,6 @@
-import { BaseEntity, DeepPartial } from 'typeorm';
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { BaseEntity, DeepPartial } from 'typeorm';
 import { ItemType } from './../types/index';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
@@ -44,11 +44,15 @@ export const retrieveLinks = async (
             selector('table[class="ak-table ak-responsivetable"] > tbody')
                 .find('tr')
                 .each((_index, element) => {
-                    links.push(load(element).root().find('a').attr('href'));
+                    const link = load(element).root().find('a').attr('href');
+
+                    if (link) {
+                        links.push(link);
+                    }
                 });
         }
 
-        storeLinks(ItemType.Equipment, links);
+        storeLinks(category, links);
     }
 
     return links;

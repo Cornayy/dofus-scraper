@@ -73,3 +73,16 @@ export const getSet = (selector: CheerioStatic) => {
             .attr('href'),
     };
 };
+
+export const getSetBonus = (selector: CheerioStatic) => {
+    return {
+        bonus: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
+            .last()
+            .find('div[class="ak-title"]')
+            .text()
+            .trim()
+            .split('\n')
+            .map((stat) => stat.trim())
+            .filter((stat) => stat),
+    };
+};

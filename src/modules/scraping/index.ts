@@ -1,5 +1,5 @@
-import { writeToDatabase } from './../../utils/data';
 /* eslint-disable @typescript-eslint/ban-types */
+import { writeToDatabase } from './../../utils/data';
 import { paths } from '../../config/options';
 import { fileExists } from '../../utils';
 import { sleep } from '../../utils/index';
@@ -23,7 +23,7 @@ export const scrape = async <T extends BaseEntity>(
         console.log(
             `A JSON file for the category (${category}) has been found, saving to database...`
         );
-       await writeToDatabase(entity, join(paths.json, `${category}.json`));
+        await writeToDatabase(entity, join(paths.json, `${category}.json`));
     } else {
         const baseUrl = `${requestOptions.baseUrl}/${category}${requestOptions.sizeParam}`;
         const content = await fetchUrl(baseUrl);
@@ -50,7 +50,7 @@ export const scrape = async <T extends BaseEntity>(
         }
     }
 
-    console.log(`Done scraping items of category (${category})`);
+    console.log(`Done scraping items of category (${category})!`);
 };
 
 export const getMaxPage = (content: string): number => {
@@ -60,11 +60,12 @@ export const getMaxPage = (content: string): number => {
         ...selector('ul[class="ak-pagination pagination ak-ajaxloader"]')
             .find('li > a[href]')
             .text()
+            .trim()
             .replace(/‹|›|»|«|/g, '')
-            .split('\n')
+            .split(/\n| /)
             .filter((element) => element !== '...' && element !== '')
             .map((pagination) => {
-                const page = pagination.replace('... ', '');
+                const page = pagination.replace('... ', '').trim();
                 return Number(page);
             })
     );
