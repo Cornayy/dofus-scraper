@@ -6,8 +6,6 @@ import { createConnection } from 'typeorm';
 dotenv.config();
 
 (async () => {
-
-
     await createConnection({
         type: process.env.DB_TYPE as any,
         host: process.env.HOST as any,
