@@ -40,13 +40,15 @@ export const getStats = (selector: CheerioStatic) => {
 };
 
 export const getLevel = (selector: CheerioStatic) => {
+    const level = parseInt(
+        selector('div[class="ak-encyclo-detail-level col-xs-6 text-right"]')
+            .text()
+            .replace('Level: ', ''),
+        10
+    );
+
     return {
-        level: parseInt(
-            selector('div[class="ak-encyclo-detail-level col-xs-6 text-right"]')
-                .text()
-                .replace('Level: ', ''),
-            10
-        ),
+        level: isNaN(level) ? 1 : level,
     };
 };
 

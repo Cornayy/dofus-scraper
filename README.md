@@ -29,13 +29,13 @@ npm run start
 - [x] Equipment
 - [x] Sets
 - [x] Weapons
+- [x] Resources
 - [ ] Classes
 - [ ] Professions
 - [ ] Bestiary
 - [ ] Pets
 - [ ] Mounts
 - [ ] Consumables
-- [ ] Resources
 - [ ] Ceremonial items
 - [ ] Sidekicks
 - [ ] Idols
