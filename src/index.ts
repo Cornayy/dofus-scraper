@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import dotenv from 'dotenv';
-import { promptUser } from './modules/prompt/index';
 import { createConnection } from 'typeorm';
+import { promptUser } from './modules/prompt';
 
 dotenv.config();
 
@@ -16,4 +16,22 @@ dotenv.config();
     });
 
     await promptUser();
+
+    // Example snippet of how to join the items into the sets.
+
+    /*
+    const manager = getMongoManager();
+    const [result] = await manager
+        .aggregate(Set, [
+            {
+                $lookup: {
+                    from: 'equipment',
+                    localField: 'encyclopediaUrl',
+                    foreignField: 'set',
+                    as: 'items',
+                },
+            },
+        ])
+        .toArray();
+        */
 })();
