@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, mkdirSync, createWriteStream } from 'fs';
 import { join } from 'path';
 import { load } from 'cheerio';
 import { getRepository, BaseEntity, DeepPartial } from 'typeorm';
 import { ItemType } from './../types';
 import { paths, requestOptions } from '../config/options';
-import { storeLinks } from '../logger';
-import { fetchUrl } from '.';
+import { fetchUrl, getFileName } from '.';
 
 export const fileExists = (path: string, category: ItemType, ext: string): boolean => {
     return existsSync(join(path, `${category}${ext}`));
@@ -55,6 +54,25 @@ export const retrieveLinks = async (
     }
 
     return links;
+};
+
+export const storeLinks = (category: ItemType, items: string[]): void => {
+    for (const path of Object.values(paths)) {
+        if (!existsSync(path)) {
+            mkdirSync(path);
+        }
+    }
+
+    const fileName = getFileName(category, '.txt');
+    const stream = createWriteStream(`${paths.links}/${fileName}`);
+
+    stream.once('open', () => {
+        for (const item of items) {
+            stream.write(`${item}\n`);
+        }
+
+        stream.end();
+    });
 };
 
 export const writeToDatabase = async <T extends BaseEntity>(

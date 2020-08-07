@@ -15,7 +15,7 @@ import { Equipment } from './../modules/equipment/models/Equipment';
 import { ItemType, PromptOption } from '../types';
 import { Weapon } from '../modules/weapon/models/Weapon';
 import { Set } from './../modules/set/models/Set';
-import { Resource } from './../modules/equipment/resource/models/Resource';
+import { Resource } from './../modules/resource//models/Resource';
 
 export const requestOptions = {
     dofusUrl: 'https://www.dofus.com',
