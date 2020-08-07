@@ -15,6 +15,7 @@ import { Equipment } from './../equipment/models/Equipment';
 import { Set } from './../set/models/Set';
 import { prompt } from 'inquirer';
 import { ItemType } from '../../types';
+import { Weapon } from '../weapon/models/Weapon';
 
 const defaultProps = [
     getName,
@@ -36,6 +37,10 @@ const options: PromptOption[] = [
         callback: () =>
             scrape<Set>(Set, ItemType.Set, [getName, getSetBonus, getLevel, getImageUrl]),
     },
+    {
+        scrapeOption: ItemType.Weapon,
+        callback: () => scrape<Weapon>(Weapon, ItemType.Weapon, defaultProps)
+    }
 ];
 
 export const promptUser = async (): Promise<void> => {

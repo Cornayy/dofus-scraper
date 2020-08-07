@@ -13,6 +13,7 @@ export interface ScrapeOptions {
 export enum ItemType {
     Equipment = 'equipment',
     Set = 'sets',
+    Weapon = 'weapons',
 }
 
 export enum StatType {

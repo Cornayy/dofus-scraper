@@ -28,7 +28,7 @@ npm run start
 ## TODO
 - [x] Equipment
 - [x] Sets
-- [ ] Weapons
+- [x] Weapons
 - [ ] Classes
 - [ ] Professions
 - [ ] Bestiary
