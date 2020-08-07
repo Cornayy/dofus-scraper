@@ -10,10 +10,16 @@ export interface ScrapeOptions {
     useDefaultProps: boolean;
 }
 
+export interface PromptOption {
+    scrapeOption: ItemType;
+    callback: () => Promise<void>;
+}
+
 export enum ItemType {
     Equipment = 'equipment',
     Set = 'sets',
     Weapon = 'weapons',
+    Resource = 'resources',
 }
 
 export enum StatType {

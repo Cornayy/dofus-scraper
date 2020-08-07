@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { BaseEntity, DeepPartial } from 'typeorm';
-import { ItemType } from './../types/index';
 import { existsSync, readFileSync } from 'fs';
 import { join } from 'path';
+import { load } from 'cheerio';
+import { getRepository, BaseEntity, DeepPartial } from 'typeorm';
+import { ItemType } from './../types';
 import { paths, requestOptions } from '../config/options';
 import { storeLinks } from '../logger';
 import { fetchUrl } from '.';
-import { load } from 'cheerio';
-import { getRepository } from 'typeorm';
 
 export const fileExists = (path: string, category: ItemType, ext: string): boolean => {
     return existsSync(join(path, `${category}${ext}`));

@@ -1,16 +1,11 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { writeToDatabase } from './../../utils/data';
-import { paths } from '../../config/options';
-import { fileExists } from '../../utils';
-import { sleep } from '../../utils/index';
-import { DeepPartial } from 'typeorm';
-import { BaseEntity, getRepository } from 'typeorm';
-import { ItemType } from '../../types/index';
-import { ScrapeCallback } from '../../types/index';
 import { load } from 'cheerio';
-import { requestOptions } from '../../config/options';
-import { fetchUrl, retrieveLinks } from '../../utils';
 import { join } from 'path';
+import { DeepPartial } from 'typeorm';
+import { ScrapeCallback, ItemType } from '../../types';
+import { BaseEntity, getRepository } from 'typeorm';
+import { requestOptions, paths } from '../../config/options';
+import { fetchUrl, retrieveLinks, fileExists, sleep, writeToDatabase } from '../../utils';
 
 export * from './scrape-fields';
 
