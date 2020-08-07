@@ -1,5 +1,5 @@
 # dofus-scraper
-Scrape the encyclopedia of [Dofus](https://www.dofus.com/en) and save it to your configured database.
+An open-source [Dofus](https://www.dofus.com/en) encyclopedia scraper. Scrape your desired encyclopedia categories and save it to your configured database.
 
 [![forthebadge](https://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](https://forthebadge.com)
 [![forthebadge](https://forthebadge.com/images/badges/built-with-swag.svg)](https://forthebadge.com)
