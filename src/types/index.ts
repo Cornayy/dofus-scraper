@@ -21,6 +21,7 @@ export enum ItemType {
     Weapon = 'weapons',
     Resource = 'resources',
     Pet = 'pets',
+    Ceremonial = 'ceremonial-item',
 }
 
 export enum StatType {

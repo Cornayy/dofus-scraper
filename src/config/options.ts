@@ -1,3 +1,4 @@
+import { Ceremonial } from './../modules/scraping/models/Ceremonial';
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {
     scrape,
@@ -11,12 +12,12 @@ import {
     getSet,
     getSetBonus,
 } from '../modules/scraping/index';
-import { Equipment } from './../modules/equipment/models/Equipment';
+import { Equipment } from '../modules/scraping/models/Equipment';
 import { ItemType, PromptOption } from '../types';
-import { Weapon } from '../modules/weapon/models/Weapon';
-import { Pet } from './../modules/pet/models/Pet';
-import { Set } from './../modules/set/models/Set';
-import { Resource } from './../modules/resource//models/Resource';
+import { Weapon } from '../modules/scraping/models/Weapon';
+import { Pet } from '../modules/scraping/models/Pet';
+import { Set } from '../modules/scraping/models/Set';
+import { Resource } from '../modules/scraping/models/Resource';
 
 export const requestOptions = {
     dofusUrl: 'https://www.dofus.com',
@@ -70,5 +71,18 @@ export const scrapeOptions: PromptOption[] = [
     {
         scrapeOption: ItemType.Pet,
         callback: () => scrape<Pet>(Pet, ItemType.Pet, defaultProps),
+    },
+    {
+        scrapeOption: ItemType.Ceremonial,
+        callback: () =>
+            scrape<Ceremonial>(Ceremonial, ItemType.Ceremonial, [
+                getName,
+                getImageUrl,
+                getType,
+                getSet,
+                getStats,
+                getLevel,
+                getDescription,
+            ]),
     },
 ];

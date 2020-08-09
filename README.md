@@ -28,12 +28,12 @@ npm run start
 - [x] Weapons
 - [x] Resources
 - [x] Pets
+- [x] Ceremonial items
 - [ ] Classes
 - [ ] Professions
 - [ ] Bestiary
 - [ ] Mounts
 - [ ] Consumables
-- [ ] Ceremonial items
 - [ ] Sidekicks
 - [ ] Idols
 - [ ] Haven bags
