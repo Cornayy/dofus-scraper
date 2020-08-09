@@ -27,10 +27,10 @@ npm run start
 - [x] Sets
 - [x] Weapons
 - [x] Resources
+- [x] Pets
 - [ ] Classes
 - [ ] Professions
 - [ ] Bestiary
-- [ ] Pets
 - [ ] Mounts
 - [ ] Consumables
 - [ ] Ceremonial items
