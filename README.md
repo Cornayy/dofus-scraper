@@ -43,9 +43,9 @@ npm run new
 - [x] Consumables
 - [x] Bestiary
 - [x] Idols
-- [ ] Professions
 
 ## Less important
+- [ ] Professions
 - [ ] Classes
 - [ ] Sidekicks
 - [ ] Haven bags
