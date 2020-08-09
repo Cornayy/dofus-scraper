@@ -15,6 +15,7 @@ import {
 import { Equipment } from '../modules/scraping/models/Equipment';
 import { ItemType, PromptOption } from '../types';
 import { Mount } from './../modules/scraping/models/Mount';
+import { Consumable } from './../modules/scraping/models/Consumable';
 import { Ceremonial } from './../modules/scraping/models/Ceremonial';
 import { Weapon } from '../modules/scraping/models/Weapon';
 import { Pet } from '../modules/scraping/models/Pet';
@@ -96,6 +97,18 @@ export const scrapeOptions: PromptOption[] = [
                 getType,
                 getStats,
                 getCharacteristics,
+            ]),
+    },
+    {
+        scrapeOption: ItemType.Consumable,
+        callback: () =>
+            scrape<Consumable>(Consumable, ItemType.Consumable, [
+                getName,
+                getImageUrl,
+                getType,
+                getStats,
+                getDescription,
+                getConditions,
             ]),
     },
 ];

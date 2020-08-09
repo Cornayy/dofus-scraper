@@ -28,6 +28,7 @@ export enum ItemType {
     Pet = 'pets',
     Ceremonial = 'ceremonial-item',
     Mount = 'mounts',
+    Consumable = 'consumables',
 }
 
 export enum StatType {

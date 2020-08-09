@@ -17,8 +17,10 @@ export const scrape = async <T extends BaseEntity>(
 ): Promise<void> => {
     // Clear the collection to avoid duplicate records.
     const repository = getRepository<T>(entity);
+    const count = await repository.count();
     const { MODE } = process.env;
-    repository.clear();
+
+    if (count > 0) await repository.clear();
 
     if (fileExists(paths.json, category, '.json') && MODE === ScrapeMode.Existing) {
         console.log(

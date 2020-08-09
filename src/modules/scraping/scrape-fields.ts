@@ -1,6 +1,9 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { load } from 'cheerio';
 
+const getStatSelector = (selector: CheerioStatic) =>
+    selector('div[class="ak-container ak-content-list ak-displaymode-col"]');
+
 export const getName = (selector: CheerioStatic) => {
     return { name: selector('h1[class="ak-return-link"]').text().trim() };
 };
@@ -77,7 +80,7 @@ export const getSetBonus = (selector: CheerioStatic) => {
 
 export const getCharacteristics = (selector: CheerioStatic) => {
     return {
-        characteristics: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
+        characteristics: getStatSelector(selector)
             .last()
             .find('div[class="ak-title"]')
             .text()
@@ -92,7 +95,7 @@ export const getCharacteristics = (selector: CheerioStatic) => {
 // Named function used to compare callbacks.
 export function getStats(selector: CheerioStatic) {
     return {
-        stats: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
+        stats: getStatSelector(selector)
             .first()
             .find('div[class="ak-title"]')
             .text()
