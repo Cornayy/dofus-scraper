@@ -1,8 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { load } from 'cheerio';
 
-const getStatSelector = (selector: CheerioStatic) =>
-    selector('div[class="ak-container ak-content-list ak-displaymode-col"]');
+const getStatSelector = (selector: CheerioStatic, first = true) => {
+    const sel = selector('div[class="ak-container ak-content-list ak-displaymode-col"]');
+    if (first) return sel.first();
+
+    return sel.last();
+};
 
 export const getName = (selector: CheerioStatic) => {
     return { name: selector('h1[class="ak-return-link"]').text().trim() };
@@ -80,8 +84,7 @@ export const getSetBonus = (selector: CheerioStatic) => {
 
 export const getCharacteristics = (selector: CheerioStatic) => {
     return {
-        characteristics: getStatSelector(selector)
-            .last()
+        characteristics: getStatSelector(selector, false)
             .find('div[class="ak-title"]')
             .text()
             .trim()
