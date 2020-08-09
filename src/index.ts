@@ -17,7 +17,7 @@ dotenv.config();
 
     await promptUser();
 
-    // Example snippet of how to join the items into the sets.
+    // Example snippet of how to join equipment into sets.
 
     /*
     const manager = getMongoManager();
