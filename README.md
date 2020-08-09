@@ -6,9 +6,6 @@ An open-source [Dofus](https://www.dofus.com/en) encyclopedia scraper. Scrape yo
 ## Disclaimer
 This project is currently work in progress, feel free to contribute.
 
-## Usage
-Create a .env file in the root of your project, a typical .env should look like this.
-
 ## Modes
 The 'MODE' environment variable is configurable in the following modes.
 
@@ -16,6 +13,9 @@ The 'MODE' environment variable is configurable in the following modes.
 existing - the scraper will look for existing .json files.
 new - the scraper will fetch the newest data.
 ```
+
+## Usage
+Create a .env file in the root of your project, a typical .env should look like this.
 
 ```
 DB_TYPE=mongodb
