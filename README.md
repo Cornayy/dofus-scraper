@@ -29,13 +29,15 @@ npm run start
 - [x] Resources
 - [x] Pets
 - [x] Ceremonial items
-- [ ] Classes
-- [ ] Professions
-- [ ] Bestiary
 - [ ] Mounts
 - [ ] Consumables
-- [ ] Sidekicks
+- [ ] Bestiary
+- [ ] Professions
+- [ ] Classes
 - [ ] Idols
+
+## Less important
+- [ ] Sidekicks
 - [ ] Haven bags
 - [ ] Harnesses
 
