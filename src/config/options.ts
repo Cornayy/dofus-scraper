@@ -1,4 +1,3 @@
-import { Ceremonial } from './../modules/scraping/models/Ceremonial';
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {
     scrape,
@@ -11,9 +10,12 @@ import {
     getImageUrl,
     getSet,
     getSetBonus,
+    getCharacteristics,
 } from '../modules/scraping/index';
 import { Equipment } from '../modules/scraping/models/Equipment';
 import { ItemType, PromptOption } from '../types';
+import { Mount } from './../modules/scraping/models/Mount';
+import { Ceremonial } from './../modules/scraping/models/Ceremonial';
 import { Weapon } from '../modules/scraping/models/Weapon';
 import { Pet } from '../modules/scraping/models/Pet';
 import { Set } from '../modules/scraping/models/Set';
@@ -83,6 +85,17 @@ export const scrapeOptions: PromptOption[] = [
                 getStats,
                 getLevel,
                 getDescription,
+            ]),
+    },
+    {
+        scrapeOption: ItemType.Mount,
+        callback: () =>
+            scrape<Mount>(Mount, ItemType.Mount, [
+                getName,
+                getImageUrl,
+                getType,
+                getStats,
+                getCharacteristics,
             ]),
     },
 ];

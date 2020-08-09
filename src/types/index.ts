@@ -15,6 +15,11 @@ export interface PromptOption {
     callback: () => Promise<void>;
 }
 
+export enum ScrapeMode {
+    New = 'new',
+    Existing = 'existing',
+}
+
 export enum ItemType {
     Equipment = 'equipment',
     Set = 'sets',
@@ -22,6 +27,7 @@ export enum ItemType {
     Resource = 'resources',
     Pet = 'pets',
     Ceremonial = 'ceremonial-item',
+    Mount = 'mounts',
 }
 
 export enum StatType {

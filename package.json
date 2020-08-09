@@ -4,7 +4,8 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "ts-node src/index.ts"
+        "new": "cross-env MODE=new ts-node src/index.ts",
+        "existing": "cross-env MODE=existing ts-node src/index.ts"
     },
     "repository": {
         "type": "git",
@@ -35,6 +36,7 @@
     "dependencies": {
         "axios": "^0.19.2",
         "cheerio": "^1.0.0-rc.3",
+        "cross-env": "^7.0.2",
         "dotenv": "^8.2.0",
         "inquirer": "^7.3.3",
         "mongodb": "^3.5.9",

@@ -75,6 +75,20 @@ export const getSetBonus = (selector: CheerioStatic) => {
     };
 };
 
+export const getCharacteristics = (selector: CheerioStatic) => {
+    return {
+        characteristics: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
+            .last()
+            .find('div[class="ak-title"]')
+            .text()
+            .trim()
+            .replace(/Characteristics/g, '')
+            .split('\n')
+            .map((char) => char.trim())
+            .filter((char) => char),
+    };
+};
+
 // Named function used to compare callbacks.
 export function getStats(selector: CheerioStatic) {
     return {

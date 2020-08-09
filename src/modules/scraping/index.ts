@@ -2,7 +2,7 @@
 import { load } from 'cheerio';
 import { join } from 'path';
 import { DeepPartial } from 'typeorm';
-import { ScrapeCallback, ItemType } from '../../types';
+import { ScrapeCallback, ItemType, ScrapeMode } from '../../types';
 import { BaseEntity, getRepository } from 'typeorm';
 import { requestOptions, paths } from '../../config/options';
 import { fetchUrl, retrieveLinks, fileExists, writeToDatabase, postUrl } from '../../utils';
@@ -15,7 +15,12 @@ export const scrape = async <T extends BaseEntity>(
     category: ItemType,
     required: ScrapeCallback<T>[]
 ): Promise<void> => {
-    if (fileExists(paths.json, category, '.json')) {
+    // Clear the collection to avoid duplicate records.
+    const repository = getRepository<T>(entity);
+    const { MODE } = process.env;
+    repository.clear();
+
+    if (fileExists(paths.json, category, '.json') && MODE === ScrapeMode.Existing) {
         console.log(
             `A JSON file for the category (${category}) has been found, saving to database...`
         );
@@ -28,7 +33,6 @@ export const scrape = async <T extends BaseEntity>(
 
         const maxPage = getMaxPage(content);
         const links = await retrieveLinks(maxPage, baseUrl, category);
-        const repository = getRepository<T>(entity);
 
         for (const link of links) {
             const itemUrl = `${requestOptions.dofusUrl}${link}`;

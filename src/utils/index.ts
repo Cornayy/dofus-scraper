@@ -4,9 +4,8 @@ export * from './data';
 
 export const fetchUrl = async (url: string): Promise<string> => {
     try {
-        const { data } = await axios.get(url);
-
         // Wait a bit before next request due to rate-limiting.
+        const { data } = await axios.get(url);
         await sleep(500);
 
         return data;
@@ -30,8 +29,8 @@ export const postUrl = async (url: string, body: string): Promise<string> => {
             'x-pjax-container': '.ak-item-details-container',
             'x-requested-with': 'XMLHttpRequest',
         };
-        const { data } = await axios.post(url, body, { headers });
         // Wait a bit before next request due to rate-limiting.
+        const { data } = await axios.post(url, body, { headers });
         await sleep(500);
 
         return data;

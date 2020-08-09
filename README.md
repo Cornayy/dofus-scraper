@@ -7,13 +7,14 @@ An open-source [Dofus](https://www.dofus.com/en) encyclopedia scraper. Scrape yo
 This project is currently work in progress, feel free to contribute.
 
 ## Usage
-Create a .env file in the root of your project, a typical .env should look like this.
+Create a .env file in the root of your project, a typical .env should look like this. The 'MODE' environment variable is configurable in 2 modes, these modes are 'existing' and 'new'. The scraper will look for existing .json files to load data when the mode is set to existing. When the mode is set to new, the scraper will fetch the newest data.
 
 ```
 DB_TYPE=mongodb
 HOST=localhost
 PORT=27017
 DB_NAME=dofus-scraper
+MODE=existing
 ```
 
 However, this project is using [TypeORM](https://typeorm.io/#/), so the use of database is to your preference. When your .env is configured, run the following command to start the scraping.
@@ -29,7 +30,7 @@ npm run start
 - [x] Resources
 - [x] Pets
 - [x] Ceremonial items
-- [ ] Mounts
+- [x] Mounts
 - [ ] Consumables
 - [ ] Bestiary
 - [ ] Professions
