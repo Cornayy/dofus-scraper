@@ -8,9 +8,7 @@ import { requestOptions, paths } from '../../config/options';
 import { fetchUrl, retrieveLinks, fileExists, writeToDatabase, postUrl } from '../../utils';
 import { getStats } from './fields/general';
 
-export * from './fields/general';
-export * from './fields/monster';
-export * from './fields/idol';
+
 
 export const scrape = async <T extends BaseEntity>(
     entity: Function,

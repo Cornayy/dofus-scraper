@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import {
-    scrape,
     getName,
     getType,
     getStats,
@@ -21,18 +20,21 @@ import {
     getIdolDifficulty,
     getIdolLevel,
     getIdolDescription,
-} from '../modules/scraping/index';
-import { Equipment } from '../modules/scraping/models/Equipment';
+} from '../modules/scraping/fields';
+import {
+    Equipment,
+    Mount,
+    Consumable,
+    Ceremonial,
+    Weapon,
+    Pet,
+    Monster,
+    Set,
+    Resource,
+    Idol,
+} from '../modules/scraping/models';
 import { ItemType, PromptOption } from '../types';
-import { Mount } from './../modules/scraping/models/Mount';
-import { Consumable } from './../modules/scraping/models/Consumable';
-import { Ceremonial } from './../modules/scraping/models/Ceremonial';
-import { Weapon } from '../modules/scraping/models/Weapon';
-import { Pet } from '../modules/scraping/models/Pet';
-import { Monster } from './../modules/scraping/models/Monster';
-import { Set } from '../modules/scraping/models/Set';
-import { Resource } from '../modules/scraping/models/Resource';
-import { Idol } from '../modules/scraping/models/Idol';
+import { scrape } from '../modules/scraping';
 
 export const requestOptions = {
     dofusUrl: 'https://www.dofus.com',
