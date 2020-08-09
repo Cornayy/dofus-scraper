@@ -17,6 +17,10 @@ import {
     getMonsterCharacteristics,
     getMonsterResistances,
     getMonsterImageUrl,
+    getIdolSpells,
+    getIdolDifficulty,
+    getIdolLevel,
+    getIdolDescription,
 } from '../modules/scraping/index';
 import { Equipment } from '../modules/scraping/models/Equipment';
 import { ItemType, PromptOption } from '../types';
@@ -28,6 +32,7 @@ import { Pet } from '../modules/scraping/models/Pet';
 import { Monster } from './../modules/scraping/models/Monster';
 import { Set } from '../modules/scraping/models/Set';
 import { Resource } from '../modules/scraping/models/Resource';
+import { Idol } from '../modules/scraping/models/Idol';
 
 export const requestOptions = {
     dofusUrl: 'https://www.dofus.com',
@@ -129,6 +134,20 @@ export const scrapeOptions: PromptOption[] = [
                 getMonsterLevel,
                 getMonsterResistances,
                 getMonsterCharacteristics,
+            ]),
+    },
+    {
+        scrapeOption: ItemType.Idol,
+        callback: () =>
+            scrape<Idol>(Idol, ItemType.Idol, [
+                getName,
+                getImageUrl,
+                getType,
+                getIdolLevel,
+                getIdolDescription,
+                getSetBonus,
+                getIdolSpells,
+                getIdolDifficulty,
             ]),
     },
 ];

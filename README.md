@@ -42,11 +42,11 @@ npm run new
 - [x] Mounts
 - [x] Consumables
 - [x] Bestiary
+- [x] Idols
 - [ ] Professions
-- [ ] Classes
-- [ ] Idols
 
 ## Less important
+- [ ] Classes
 - [ ] Sidekicks
 - [ ] Haven bags
 - [ ] Harnesses

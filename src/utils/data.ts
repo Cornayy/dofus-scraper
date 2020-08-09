@@ -32,8 +32,10 @@ export const retrieveLinks = async (
     } else {
         console.log(`Links for category (${category}) not found, creating link file.`);
 
-        for (let i = 1; i <= maxPage; i++) {
-            const item = await fetchUrl(`${url}${requestOptions.pageParam}${i}`);
+        let counter = 1;
+
+        do {
+            const item = await fetchUrl(`${url}${requestOptions.pageParam}${counter}`);
 
             if (!item) continue;
 
@@ -48,7 +50,9 @@ export const retrieveLinks = async (
                         links.push(link);
                     }
                 });
-        }
+
+            counter++;
+        } while (counter <= maxPage);
 
         storeLinks(category, links);
     }

@@ -30,6 +30,7 @@ export enum ItemType {
     Mount = 'mounts',
     Consumable = 'consumables',
     Monster = 'monsters',
+    Idol = 'idols',
 }
 
 export enum StatType {
