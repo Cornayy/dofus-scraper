@@ -14,6 +14,7 @@ import {
 import { Equipment } from './../modules/equipment/models/Equipment';
 import { ItemType, PromptOption } from '../types';
 import { Weapon } from '../modules/weapon/models/Weapon';
+import { Pet } from './../modules/pet/models/Pet';
 import { Set } from './../modules/set/models/Set';
 import { Resource } from './../modules/resource//models/Resource';
 
@@ -22,6 +23,7 @@ export const requestOptions = {
     baseUrl: 'https://www.dofus.com/en/mmorpg/encyclopedia',
     sizeParam: '?size=96',
     pageParam: '&page=',
+    petBody: 'level=100&_pjax=.ak-item-details-container',
 };
 
 export const paths = {
@@ -64,5 +66,9 @@ export const scrapeOptions: PromptOption[] = [
                 getDescription,
                 getImageUrl,
             ]),
+    },
+    {
+        scrapeOption: ItemType.Pet,
+        callback: () => scrape<Pet>(Pet, ItemType.Pet, defaultProps),
     },
 ];

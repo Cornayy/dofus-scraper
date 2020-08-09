@@ -25,20 +25,6 @@ export const getImageUrl = (selector: CheerioStatic) => {
     return { imageUrl: selector('div[class="ak-encyclo-detail-illu"] > img').attr('src') };
 };
 
-export const getStats = (selector: CheerioStatic) => {
-    return {
-        stats: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
-            .first()
-            .find('div[class="ak-title"]')
-            .text()
-            .trim()
-            .replace(/Effects/g, '')
-            .split('\n')
-            .map((stat) => stat.trim())
-            .filter((stat) => stat),
-    };
-};
-
 export const getLevel = (selector: CheerioStatic) => {
     const level = parseInt(
         selector('div[class="ak-encyclo-detail-level col-xs-6 text-right"]')
@@ -88,3 +74,18 @@ export const getSetBonus = (selector: CheerioStatic) => {
             .filter((stat) => stat),
     };
 };
+
+// Named function used to compare callbacks.
+export function getStats(selector: CheerioStatic) {
+    return {
+        stats: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
+            .first()
+            .find('div[class="ak-title"]')
+            .text()
+            .trim()
+            .replace(/Effects|Subscribers only/g, '')
+            .split('\n')
+            .map((stat) => stat.trim())
+            .filter((stat) => stat),
+    };
+}

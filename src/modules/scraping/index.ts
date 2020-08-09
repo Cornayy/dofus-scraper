@@ -5,7 +5,8 @@ import { DeepPartial } from 'typeorm';
 import { ScrapeCallback, ItemType } from '../../types';
 import { BaseEntity, getRepository } from 'typeorm';
 import { requestOptions, paths } from '../../config/options';
-import { fetchUrl, retrieveLinks, fileExists, sleep, writeToDatabase } from '../../utils';
+import { fetchUrl, retrieveLinks, fileExists, writeToDatabase, postUrl } from '../../utils';
+import { getStats } from './scrape-fields';
 
 export * from './scrape-fields';
 
@@ -30,22 +31,40 @@ export const scrape = async <T extends BaseEntity>(
         const repository = getRepository<T>(entity);
 
         for (const link of links) {
-            const item = await fetchUrl(`${requestOptions.dofusUrl}${link}`);
+            const itemUrl = `${requestOptions.dofusUrl}${link}`;
+            const item = await fetchUrl(itemUrl);
 
-            if (!item) continue;
+            if (!item || !link) continue;
 
-            const object = required
-                .map((callback) => getContent<T>(item, callback))
-                .reduce((a, b) => ({ ...a, ...b }));
-
+            const object = await createObject(category, required, item, itemUrl);
             await repository.create({ ...object, encyclopediaUrl: link }).save();
-
-            // Wait a bit before next scraping due to rate-limiting.
-            await sleep(500);
         }
     }
 
     console.log(`Done scraping items of category (${category})!`);
+};
+
+export const createObject = async <T>(
+    category: ItemType,
+    required: ScrapeCallback<T>[],
+    item: string,
+    itemUrl: string
+): Promise<DeepPartial<T>> => {
+    const props = await Promise.all(
+        required.map(async (callback) => {
+            let content = item;
+
+            // Fetch the data of a level 100 pet when the scraping category is Pet.
+            if (callback.name === getStats.name && category === ItemType.Pet) {
+                const stats = await postUrl(itemUrl, requestOptions.petBody);
+                if (stats) content = stats;
+            }
+
+            return getContent<T>(content, callback);
+        })
+    );
+
+    return props.reduce((a, b) => ({ ...a, ...b }));
 };
 
 export const getMaxPage = (content: string): number => {

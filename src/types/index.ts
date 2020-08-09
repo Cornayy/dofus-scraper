@@ -20,6 +20,7 @@ export enum ItemType {
     Set = 'sets',
     Weapon = 'weapons',
     Resource = 'resources',
+    Pet = 'pets',
 }
 
 export enum StatType {
