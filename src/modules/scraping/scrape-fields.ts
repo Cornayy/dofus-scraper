@@ -2,9 +2,7 @@
 import { load } from 'cheerio';
 
 const getStatSelector = (selector: CheerioStatic) =>
-    selector(
-        'div[class="ak-container ak-content-list ak-displaymode-col"] > div[class="ak-title"]'
-    );
+    selector('div[class="ak-container ak-content-list ak-displaymode-col"]');
 
 export const getName = (selector: CheerioStatic) => {
     return { name: selector('h1[class="ak-return-link"]').text().trim() };
@@ -84,11 +82,11 @@ export const getCharacteristics = (selector: CheerioStatic) => {
     return {
         characteristics: getStatSelector(selector)
             .last()
+            .find('div[class="ak-title"]')
             .text()
             .trim()
             .replace(/Characteristics/g, '')
             .split('\n')
-            .map((char) => char.trim())
             .filter((char) => char),
     };
 };
@@ -98,6 +96,7 @@ export function getStats(selector: CheerioStatic) {
     return {
         stats: getStatSelector(selector)
             .first()
+            .find('div[class="ak-title"]')
             .text()
             .trim()
             .replace(/Effects|Subscribers only/g, '')
