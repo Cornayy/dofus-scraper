@@ -2,7 +2,9 @@
 import { load } from 'cheerio';
 
 const getStatSelector = (selector: CheerioStatic) =>
-    selector('div[class="ak-container ak-content-list ak-displaymode-col"]');
+    selector(
+        'div[class="ak-container ak-content-list ak-displaymode-col"] > div[class="ak-title"]'
+    );
 
 export const getName = (selector: CheerioStatic) => {
     return { name: selector('h1[class="ak-return-link"]').text().trim() };
@@ -69,7 +71,6 @@ export const getSetBonus = (selector: CheerioStatic) => {
     return {
         bonus: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
             .last()
-            .find('div[class="ak-title"]')
             .text()
             .trim()
             .split('\n')
@@ -82,7 +83,6 @@ export const getCharacteristics = (selector: CheerioStatic) => {
     return {
         characteristics: getStatSelector(selector)
             .last()
-            .find('div[class="ak-title"]')
             .text()
             .trim()
             .replace(/Characteristics/g, '')
@@ -97,7 +97,7 @@ export function getStats(selector: CheerioStatic) {
     return {
         stats: getStatSelector(selector)
             .first()
-            .find('div[class="ak-title"]')
+            .find('')
             .text()
             .trim()
             .replace(/Effects|Subscribers only/g, '')
