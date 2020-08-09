@@ -11,6 +11,12 @@ import {
     getSet,
     getSetBonus,
     getCharacteristics,
+    getMonsterAreas,
+    getMonsterFamily,
+    getMonsterLevel,
+    getMonsterCharacteristics,
+    getMonsterResistances,
+    getMonsterImageUrl,
 } from '../modules/scraping/index';
 import { Equipment } from '../modules/scraping/models/Equipment';
 import { ItemType, PromptOption } from '../types';
@@ -19,6 +25,7 @@ import { Consumable } from './../modules/scraping/models/Consumable';
 import { Ceremonial } from './../modules/scraping/models/Ceremonial';
 import { Weapon } from '../modules/scraping/models/Weapon';
 import { Pet } from '../modules/scraping/models/Pet';
+import { Monster } from './../modules/scraping/models/Monster';
 import { Set } from '../modules/scraping/models/Set';
 import { Resource } from '../modules/scraping/models/Resource';
 
@@ -109,6 +116,19 @@ export const scrapeOptions: PromptOption[] = [
                 getStats,
                 getDescription,
                 getConditions,
+            ]),
+    },
+    {
+        scrapeOption: ItemType.Monster,
+        callback: () =>
+            scrape<Monster>(Monster, ItemType.Monster, [
+                getName,
+                getMonsterImageUrl,
+                getMonsterAreas,
+                getMonsterFamily,
+                getMonsterLevel,
+                getMonsterResistances,
+                getMonsterCharacteristics,
             ]),
     },
 ];

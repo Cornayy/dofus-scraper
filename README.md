@@ -40,8 +40,8 @@ npm run new
 - [x] Pets
 - [x] Ceremonial items
 - [x] Mounts
-- [ ] Consumables
-- [ ] Bestiary
+- [x] Consumables
+- [x] Bestiary
 - [ ] Professions
 - [ ] Classes
 - [ ] Idols
