@@ -71,6 +71,7 @@ export const getSetBonus = (selector: CheerioStatic) => {
     return {
         bonus: selector('div[class="ak-container ak-content-list ak-displaymode-col"]')
             .last()
+            .find('div[class="ak-title"]')
             .text()
             .trim()
             .split('\n')
@@ -97,7 +98,6 @@ export function getStats(selector: CheerioStatic) {
     return {
         stats: getStatSelector(selector)
             .first()
-            .find('')
             .text()
             .trim()
             .replace(/Effects|Subscribers only/g, '')
