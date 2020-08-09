@@ -6,9 +6,11 @@ import { ScrapeCallback, ItemType, ScrapeMode } from '../../types';
 import { BaseEntity, getRepository } from 'typeorm';
 import { requestOptions, paths } from '../../config/options';
 import { fetchUrl, retrieveLinks, fileExists, writeToDatabase, postUrl } from '../../utils';
-import { getStats } from './scrape-fields';
+import { getStats } from './general';
 
-export * from './scrape-fields';
+export * from './general';
+export * from './monster';
+export * from './idol';
 
 export const scrape = async <T extends BaseEntity>(
     entity: Function,
