@@ -1,3 +1,4 @@
+import { MonsterDrop } from './../../../types/index';
 import { Entity, ObjectID, ObjectIdColumn, Column, BaseEntity } from 'typeorm';
 
 @Entity()
@@ -28,4 +29,7 @@ export class Monster extends BaseEntity {
 
     @Column()
     areas: string[];
+
+    @Column()
+    drops: MonsterDrop[];
 }

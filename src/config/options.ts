@@ -16,6 +16,7 @@ import {
     getMonsterCharacteristics,
     getMonsterResistances,
     getMonsterImageUrl,
+    getMonsterDrops,
     getIdolSpells,
     getIdolDifficulty,
     getIdolLevel,
@@ -136,6 +137,7 @@ export const scrapeOptions: PromptOption[] = [
                 getMonsterLevel,
                 getMonsterResistances,
                 getMonsterCharacteristics,
+                getMonsterDrops,
             ]),
     },
     {

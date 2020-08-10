@@ -6,6 +6,12 @@ export interface ObjectPart {
     [key: string]: string | number | string[];
 }
 
+export interface MonsterDrop {
+    name: string;
+    imageUrl: string;
+    chance: string;
+}
+
 export interface ScrapeOptions {
     useDefaultProps: boolean;
 }

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { load } from 'cheerio';
 import { getStatSelector } from './general';
+import { MonsterDrop } from './../../../types';
 
 export const getMonsterCharacteristics = (selector: CheerioStatic) => {
     return {
@@ -53,5 +54,27 @@ export const getMonsterAreas = (selector: CheerioStatic) => {
             .split(',')
             .map((area) => area.trim())
             .filter((area) => area),
+    };
+};
+
+export const getMonsterDrops = (selector: CheerioStatic) => {
+    const drops: MonsterDrop[] = [];
+
+    selector('div[class="ak-container ak-panel ak-monster-drops"]')
+        .find('div[class="ak-main"]')
+        .each((_index, ele) => {
+            const element = load(ele).root();
+
+            drops.push({
+                name: element.find('div[class="ak-title"]').text().trim(),
+                imageUrl:
+                    element.find('div[class="ak-image"] > img').attr('src') ||
+                    element.find('div[class="ak-image"] > a > span > img').attr('src'),
+                chance: element.find('div[class="ak-drop-percent"] > span').text().trim(),
+            });
+        });
+
+    return {
+        drops,
     };
 };
