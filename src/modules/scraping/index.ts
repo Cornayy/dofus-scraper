@@ -4,7 +4,7 @@ import { join } from 'path';
 import { DeepPartial } from 'typeorm';
 import { ScrapeCallback, ItemType, ScrapeMode } from '../../types';
 import { BaseEntity, getRepository } from 'typeorm';
-import { requestOptions, paths } from '../../config/options';
+import { requestOptions, paths } from './config/options';
 import { fetchUrl, retrieveLinks, fileExists, writeToDatabase, postUrl } from '../../utils';
 import { getStats } from './fields/general';
 

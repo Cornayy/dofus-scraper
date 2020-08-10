@@ -5,7 +5,7 @@ import { join } from 'path';
 import { load } from 'cheerio';
 import { getRepository, BaseEntity, DeepPartial } from 'typeorm';
 import { ItemType } from './../types';
-import { paths, requestOptions } from '../config/options';
+import { paths, requestOptions } from '../modules/scraping/config/options';
 import { fetchUrl, getFileName } from '.';
 
 export const fileExists = (path: string, category: ItemType, ext: string): boolean => {

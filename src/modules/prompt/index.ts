@@ -1,6 +1,6 @@
 import { prompt } from 'inquirer';
 import { ItemType } from '../../types';
-import { scrapeOptions } from '../../config/options';
+import { scrapeOptions } from '../scraping/config/options';
 
 export const promptUser = async (): Promise<void> => {
     const { option } = await prompt([
