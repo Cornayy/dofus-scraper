@@ -19,7 +19,7 @@ new - the scraper will fetch the newest data.
 
 ## Usage
 
-Create a .env file in the root of your project, a typical .env should look like this.
+Create a .env file in the root of your project, a typical .env should look like this. You can also copy the contents of the .env.example file in the root directory.
 
 ```
 DB_TYPE=mongodb
