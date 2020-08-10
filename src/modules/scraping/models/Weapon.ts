@@ -1,3 +1,4 @@
+import { RecipeIngredient } from './../../../types/index';
 import { Entity, ObjectID, ObjectIdColumn, Column, BaseEntity } from 'typeorm';
 
 @Entity()
@@ -28,4 +29,7 @@ export class Weapon extends BaseEntity {
 
     @Column()
     conditions: string[];
+
+    @Column()
+    recipe: RecipeIngredient[];
 }

@@ -12,6 +12,12 @@ export interface MonsterDrop {
     chance: string;
 }
 
+export interface RecipeIngredient {
+    name: string;
+    imageUrl: string;
+    amount: number;
+}
+
 export interface ScrapeOptions {
     useDefaultProps: boolean;
 }

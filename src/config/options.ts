@@ -21,6 +21,8 @@ import {
     getIdolDifficulty,
     getIdolLevel,
     getIdolDescription,
+    getRecipe,
+    getSetRecipe,
 } from '../modules/scraping/fields';
 import {
     Equipment,
@@ -64,16 +66,23 @@ const defaultProps = [
 export const scrapeOptions: PromptOption[] = [
     {
         scrapeOption: ItemType.Equipment,
-        callback: () => scrape<Equipment>(Equipment, ItemType.Equipment, [...defaultProps, getSet]),
+        callback: () =>
+            scrape<Equipment>(Equipment, ItemType.Equipment, [...defaultProps, getSet, getRecipe]),
     },
     {
         scrapeOption: ItemType.Set,
         callback: () =>
-            scrape<Set>(Set, ItemType.Set, [getName, getSetBonus, getLevel, getImageUrl]),
+            scrape<Set>(Set, ItemType.Set, [
+                getName,
+                getSetBonus,
+                getLevel,
+                getImageUrl,
+                getSetRecipe,
+            ]),
     },
     {
         scrapeOption: ItemType.Weapon,
-        callback: () => scrape<Weapon>(Weapon, ItemType.Weapon, defaultProps),
+        callback: () => scrape<Weapon>(Weapon, ItemType.Weapon, [...defaultProps, getRecipe]),
     },
     {
         scrapeOption: ItemType.Resource,

@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { RecipeIngredient } from './../../../types/index';
 import { load } from 'cheerio';
 
 export const getStatSelector = (selector: CheerioStatic, first = true) => {
@@ -92,6 +93,42 @@ export const getCharacteristics = (selector: CheerioStatic) => {
             .split('\n')
             .filter((char) => char),
     };
+};
+
+export const getRecipeSelector = (selector: CheerioStatic, base: string, divSize: string) => {
+    const recipe: RecipeIngredient[] = [];
+
+    selector(base)
+        .find(`div[class="ak-column ak-container col-xs-12 ${divSize}"]`)
+        .each((_index, ele) => {
+            const element = load(ele).root();
+            const amount = parseInt(
+                element.find('div[class="ak-front"]').text().replace(' x', ''),
+                10
+            );
+
+            recipe.push({
+                name: element.find('div[class="ak-title"]').text().trim(),
+                imageUrl:
+                    element.find('div[class="ak-image"] > img').attr('src') ||
+                    element.find('div[class="ak-image"] > a > span > img').attr('src'),
+                amount: isNaN(amount) ? 1 : amount,
+            });
+        });
+
+    return { recipe };
+};
+
+export const getRecipe = (selector: CheerioStatic) => {
+    return getRecipeSelector(selector, 'div[class="ak-container ak-panel ak-crafts"]', 'col-sm-6');
+};
+
+export const getSetRecipe = (selector: CheerioStatic) => {
+    return getRecipeSelector(
+        selector,
+        'div[class="ak-container ak-content-list ak-encyclo-item-crafts clearfix ak-displaymode-image-col"]',
+        'col-md-6'
+    );
 };
 
 // Named function used to compare callbacks.

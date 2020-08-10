@@ -1,3 +1,4 @@
+import { RecipeIngredient } from './../../../types/index';
 import { Entity, ObjectID, ObjectIdColumn, Column, BaseEntity } from 'typeorm';
 
 @Entity()
@@ -19,4 +20,7 @@ export class Set extends BaseEntity {
 
     @Column()
     bonus: string[];
+
+    @Column()
+    recipe: RecipeIngredient[];
 }

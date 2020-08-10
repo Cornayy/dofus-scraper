@@ -1,4 +1,5 @@
 import { Entity, ObjectID, ObjectIdColumn, Column, BaseEntity } from 'typeorm';
+import { RecipeIngredient } from '../../../types';
 
 @Entity()
 export class Equipment extends BaseEntity {
@@ -31,4 +32,7 @@ export class Equipment extends BaseEntity {
 
     @Column()
     stats: string[];
+
+    @Column()
+    recipe: RecipeIngredient[]
 }
