@@ -29,7 +29,7 @@ DB_NAME=dofus-scraper
 MODE=existing
 ```
 
-However, this project is using [TypeORM](https://typeorm.io/#/), so the use of database is to your preference. When your .env is configured, run the following command to start the scraping.
+However, this project is using [TypeORM](https://typeorm.io/#/), so the use of database is to your preference. When your .env is configured, run one of the following commands to start the scraping.
 
 ```
 npm run existing
