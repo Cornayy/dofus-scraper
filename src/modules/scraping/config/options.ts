@@ -23,7 +23,7 @@ import {
     getIdolDescription,
     getRecipe,
     getSetRecipe,
-} from '../modules/scraping/fields';
+} from '../fields';
 import {
     Equipment,
     Mount,
@@ -35,9 +35,9 @@ import {
     Set,
     Resource,
     Idol,
-} from '../modules/scraping/models';
-import { ItemType, PromptOption } from '../types';
-import { scrape } from '../modules/scraping';
+} from '../models';
+import { ItemType, PromptOption } from '../../../types';
+import { scrape } from '..';
 
 export const requestOptions = {
     dofusUrl: 'https://www.dofus.com',
