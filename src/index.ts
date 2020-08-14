@@ -4,7 +4,6 @@ import { createConnection } from 'typeorm';
 import { promptUser } from './modules/prompt';
 
 dotenv.config();
-
 (async () => {
     await createConnection({
         type: process.env.DB_TYPE as any,

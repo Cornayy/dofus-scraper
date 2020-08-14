@@ -36,6 +36,9 @@ npm run existing
 npm run new
 ```
 
+## Example
+![Scraping](./example/dofus-scraper.gif)
+
 ## TODO
 
 -   [x] Equipment
