@@ -33,6 +33,10 @@ export const getImageUrl = (selector: CheerioStatic) => {
     return { imageUrl: selector('div[class="ak-encyclo-detail-illu"] > img').attr('src') };
 };
 
+export const getSetImageUrl = (selector: CheerioStatic) => {
+    return { imageUrl: selector('div[class="ak-entitylook-container"] > img').attr('src') };
+};
+
 export const getLevel = (selector: CheerioStatic) => {
     const level = parseInt(
         selector('div[class="ak-encyclo-detail-level col-xs-6 text-right"]')
