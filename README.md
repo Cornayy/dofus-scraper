@@ -6,7 +6,7 @@ An open-source [Dofus](https://www.dofus.com/en) encyclopedia scraper. Scrape yo
 
 ## Contributing
 
-The most important categories of the encyclopedia have been scraped, if you feel like some information about items is missing, feel free to open an issue or contribute.
+The most important categories of the encyclopedia have been scraped, if you feel like some information about items are missing, feel free to open an issue or contribute.
 
 ## Modes
 
